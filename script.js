@@ -12,3 +12,8 @@ for (let i = 0; i < 16; i++) {
     column.appendChild(row);
   }
 }
+
+grid.addEventListener('mouseover', (event) => {
+  const target = event.target;
+  target.style.backgroundColor = 'black';
+});
