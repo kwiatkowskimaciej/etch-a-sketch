@@ -33,9 +33,28 @@ function changeNumberOfSquares() {
   createGrid(numberOfSquares);
 }
 
+function randomRGB() {
+  return Math.floor(Math.random() * 255) + 1;
+}
+
+let shadeCounter = 0;
+let increment = 1;
+
+function updateShadeCounter() {
+  shadeCounter += increment;
+  if (shadeCounter > 10 || shadeCounter < 0) {
+    increment *= -1;
+    shadeCounter += increment;
+  }
+}
+
 grid.addEventListener('mouseover', (event) => {
   const target = event.target;
-  target.style.backgroundColor = 'black';
+  updateShadeCounter();
+  backgroundColor = `color-mix(in srgb, black ${
+    shadeCounter * 10
+  }%, rgb(${randomRGB()} ${randomRGB()} ${randomRGB()}) )`;
+  target.style.backgroundColor = backgroundColor;
 });
 
 button.addEventListener('click', changeNumberOfSquares);
